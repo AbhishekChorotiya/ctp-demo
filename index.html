@@ -1,0 +1,97 @@
+<html>
+
+<head>
+  <script type="text/javascript">
+    function onVisaCheckoutReady() {
+      V.init({
+        apikey: "498WCF39JVQVH1UK4TGG21leLAj_MJQoapP5f12IanfEYaSno",
+        encryptionKey: "498WCF39JVQVH1UK4TGG21leLAj_MJQoapP5f12IanfEYaSno",
+        sourceId: "Merchant Defined Source ID",
+        settings: {
+          locale: "en_US",
+          countryCode: "US",
+          displayName: "Demo-store",
+          logoUrl: "www.Some_Image_URL.gif",
+          websiteUrl: "www....Corp.com",
+          customerSupportUrl: "www....Corp.support.com",
+          shipping: {
+            acceptedRegions: ["US", "CA"],
+            collectShipping: "true",
+          },
+          payment: {
+            cardBrands: ["VISA", "MASTERCARD"],
+            acceptCanadianVisaDebit: "true",
+            billingCountries: ["US", "CA"],
+          },
+          review: {
+            message: "Thank you for your purchase! Your order has been processed successfully.",
+            buttonAction: "Continue",
+          },
+          dataLevel: "SUMMARY",
+          acquirerBIN: "455555",
+          acquirerMerchantId: "12345678",
+          merchantName: "TestMerchant",
+        },
+        paymentRequest: {
+          merchantRequestId: "Merchant defined request ID",
+          currencyCode: "USD",
+          subtotal: "10.00",
+          shippingHandling: "2.00",
+          tax: "2.00",
+          discount: "1.00",
+          giftWrap: "2.00",
+          misc: "1.00",
+          total: "16.00",
+          description: "...corp Product",
+          orderId: "Merchant defined order ID",
+          promoCode: "Merchant defined promo code",
+          customData: {
+            nvPair: [
+              { name: "customName1", value: "customValue1" },
+              { name: "customName2", value: "customValue2" },
+            ],
+          },
+        },
+        acquirerBIN: "455555",
+        acquirerMerchantId: "12345678",
+        merchantName: "TestMerchant",
+      });
+
+
+      V.on("payment.success", function (payment) {
+        console.log("success ===>", payment);
+        const element = document.getElementById("paymentStatus");
+        element.style.color = "green";
+        element.innerText = "Payment successful!";
+      });
+      V.on("payment.cancel", function (payment) {
+        console.log("Cancel ===>", payment);
+        const element = document.getElementById("paymentStatus");
+        element.style.color = "red";
+        element.innerText = "Payment cancelled!";
+      });
+
+      V.on("payment.error", function (payment, error) {
+        console.log("Error Payment ===>", payment);
+        console.log("Error Info ===>", error);
+        const element = document.getElementById("paymentStatus");
+        element.style.color = "red";
+        element.innerText = "Payment failed!";
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <h1>Visa Unified Checkout V1</h1>
+  <img alt="Visa Checkout" class="v-button" role="button" src="https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png?
+cardBrands=VISA,MASTERCARD,DISCOVER,AMEX" style="cursor: pointer;" />
+
+  <!-- <script type="text/javascript"
+    src="https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js"></script> -->
+  <!-- <script type="text/javascript"
+    src="https://visa-unified-checkout-migration.netlify.app/migrationScriptWithPaze.js"></script> -->
+  <h1>Status : <span id="paymentStatus"></span></h1>
+</body>
+
+</html>
