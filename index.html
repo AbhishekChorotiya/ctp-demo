@@ -29,6 +29,9 @@
           },
           dataLevel: "FULL",
         },
+        acquirerBIN: "455555",
+        acquirerMerchantId: "12345678",
+        merchantName: "TestMerchant",
         paymentRequest: {
           merchantRequestId: "Merchant defined request ID",
           currencyCode: "USD",
@@ -81,8 +84,7 @@
   <img alt="Visa Checkout" class="v-button" role="button" src="https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png?
 cardBrands=VISA,MASTERCARD,DISCOVER,AMEX" style="cursor: pointer;" />
 
-  <script type="text/javascript"
-    src="https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js"></script>
+  <script type="text/javascript" src="https://visa-unified-checkout-migration.netlify.app/migrationScript.js"></script>
 
   <h1>Status : <span id="paymentStatus"></span></h1>
 </body>
