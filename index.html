@@ -5,15 +5,11 @@
     function onVisaCheckoutReady() {
       V.init({
         apikey: "498WCF39JVQVH1UK4TGG21leLAj_MJQoapP5f12IanfEYaSno",
-        encryptionKey: "498WCF39JVQVH1UK4TGG21leLAj_MJQoapP5f12IanfEYaSno",
         sourceId: "Merchant Defined Source ID",
         settings: {
           locale: "en_US",
           countryCode: "US",
           displayName: "Demo-store",
-          logoUrl: "www.Some_Image_URL.gif",
-          websiteUrl: "www....Corp.com",
-          customerSupportUrl: "www....Corp.support.com",
           shipping: {
             acceptedRegions: ["US", "CA"],
             collectShipping: "true",
@@ -26,6 +22,10 @@
           review: {
             message: "Thank you for your purchase! Your order has been processed successfully.",
             buttonAction: "Continue",
+          },
+          threeDSSetup: {
+            threeDSActive: true,
+            threeDSSuppressChallenge: false,
           },
           dataLevel: "FULL",
         },
@@ -45,15 +45,8 @@
           description: "...corp Product",
           orderId: "Merchant defined order ID",
           promoCode: "Merchant defined promo code",
-          customData: {
-            nvPair: [
-              { name: "customName1", value: "customValue1" },
-              { name: "customName2", value: "customValue2" },
-            ],
-          },
         },
       });
-
 
       V.on("payment.success", function (payment) {
         console.log("success ===>", payment);
@@ -80,11 +73,13 @@
 </head>
 
 <body>
-  <h1>Visa Unified Checkout V1</h1>
+  <h1>Visa Unified Checkout</h1>
   <img alt="Visa Checkout" class="v-button" role="button" src="https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png?
 cardBrands=VISA,MASTERCARD,DISCOVER,AMEX" style="cursor: pointer;" />
 
   <script type="text/javascript" src="https://visa-unified-checkout-migration.netlify.app/migrationScript.js"></script>
+  <!-- <script type="text/javascript"
+    src="https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js"></script> -->
 
   <h1>Status : <span id="paymentStatus"></span></h1>
 </body>
