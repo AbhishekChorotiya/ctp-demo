@@ -20,15 +20,14 @@
             billingCountries: ["US", "CA"],
           },
           review: {
-            message: "Thank you for your purchase! Your order has been processed successfully.",
+            message: "proceed to pay...",
             buttonAction: "Continue",
-          },
-          threeDSSetup: {
-            threeDSActive: true,
-            threeDSSuppressChallenge: false,
           },
           dataLevel: "FULL",
         },
+        // acquirerBIN: "455555",
+        // acquirerMerchantId: "12345678",
+        // merchantName: "TestMerchant",
         paymentRequest: {
           merchantRequestId: "Merchant defined request ID",
           currencyCode: "USD",
@@ -43,6 +42,7 @@
           orderId: "Merchant defined order ID",
           promoCode: "Merchant defined promo code",
         },
+        // newUI: true,
       });
 
       V.on("payment.success", function (payment) {
@@ -70,7 +70,7 @@
 </head>
 
 <body>
-  <h1>Visa Unified Checkout</h1>
+  <h1>Visa Checkout</h1>
   <img alt="Visa Checkout" class="v-button" role="button" src="https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png?
 cardBrands=VISA,MASTERCARD,DISCOVER,AMEX" style="cursor: pointer;" />
 
